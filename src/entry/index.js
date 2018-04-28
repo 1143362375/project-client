@@ -2,8 +2,11 @@ import dva from 'dva';
 import './index.css';
 
 // 1. Initialize
-const app = dva();
-
+const app = dva({
+  onError(error) {
+    console.error(error);
+  }
+});
 // 2. Plugins
 // app.use({});
 
@@ -11,7 +14,7 @@ const app = dva();
 // app.model(require('./models/example').default);
 
 // 4. Router
-app.router(require('../router').default);
+app.router(require('../routes/Router'));
 
 // 5. Start
 app.start('#root');
